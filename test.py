@@ -1,5 +1,6 @@
 import numpy as np
-import one_NN
+import MDS
+import KNN_search
 # a=np.loadtxt('/home/victorfang/Desktop/two datasets/sonar-train.txt',delimiter=',')
 # b=np.matmul(a,a.T)
 # # values,vectors=np.linalg.eig(b)
@@ -15,10 +16,20 @@ import one_NN
 # vec=np.delete(vec,-1,1)
 # print(vec)
 
-data_train=np.array([[1,2,3],[2,2,3],[3,2,3],[4,2,3]],dtype=np.float64)
+data_train=np.array([[0,2,3],[10,2,3],[0,2,3]],dtype=np.float64)
 
-mean=np.mean(data_train,axis=0)
-data_train=data_train-mean
-label_train=np.array([0,1,2,3])
-data_test=np.array([[1,2,3],[2,1,3]],dtype=np.float64)
-print(one_NN.one_NN(data_train,label_train,data_test))
+print(MDS.MDS(data_train,2))
+# c=np.argsort(data_train)[:,1:]
+# for i in range(data_train.shape[0]):
+#     data_train[i,c[i]]=0
+# print(data_train)
+# a=np.array([[0,1],[1,-1],[-1,0]])
+# print(np.cov(a,rowvar=False))
+# c=np.mean(a,axis=1).reshape([3,1])
+# # c=c.reshape([3,1])
+# print(c)
+# print(0.5*(a))
+# b=np.array([0,3,4])
+# print(np.diag(b))
+# u,s,v=np.linalg.svd(a)
+# print(v)
