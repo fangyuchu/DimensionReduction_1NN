@@ -1,6 +1,9 @@
 import numpy as np
 import MDS
 import KNN_search
+import Isomap
+import networkx as nx
+import matplotlib.pyplot as plt
 # a=np.loadtxt('/home/victorfang/Desktop/two datasets/sonar-train.txt',delimiter=',')
 # b=np.matmul(a,a.T)
 # # values,vectors=np.linalg.eig(b)
@@ -16,9 +19,22 @@ import KNN_search
 # vec=np.delete(vec,-1,1)
 # print(vec)
 
-data_train=np.array([[0,2,3],[10,2,3],[0,2,3]],dtype=np.float64)
-
-print(MDS.MDS(data_train,2))
+# data_train=np.array([[0,2,3],[10,2,3],[0,2,3]],dtype=np.float64)
+# for i in range(1,3):
+#     print(i)
+dist=np.array([[0,2,-1,-1,-1,-1,-1],
+               [2,0,2,-1,-1,-1,-1],
+               [-1,2,0,2,2,-1,-1],
+               [-1,-1,2,0,-1,-1,-1],
+               [-1,-1,2,-1,0,-1,-1],
+               [-1,-1,-1,-1,-1,0,2],
+               [-1,-1,-1,-1,-1,2,0]])
+Isomap.floyd(dist)
+G=nx.Graph()
+G.add_weighted_edges_from([(1,2,5)])
+nx.draw(G)
+plt.savefig("test.png")
+plt.draw()
 # c=np.argsort(data_train)[:,1:]
 # for i in range(data_train.shape[0]):
 #     data_train[i,c[i]]=0
